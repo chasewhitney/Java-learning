@@ -1,3 +1,3 @@
 # java-learning
 
-Repo for notes and examples while learning java.
+Repo for notes and examples while learning Java.
