@@ -1,10 +1,7 @@
 public class LearningJava {
 
     public static void main(String[] args) {
-
-        // No class import needed
-        Car kia = new Car();
-
+        
 //        overloadArea(5);
 //        overloadArea(3,4);
     }
@@ -43,3 +40,9 @@ public class LearningJava {
 // ---- Classes ----
 // So far do not need to be imported
 // Overload constructor, first statement must be: this(fields...)
+// Static methods:
+// Can't access instance methods or instance variables directly
+// Called with methodName() if in same class, else ClassName.methodName()
+// Static variables:
+// Every instance shares same static variable. Change to 1 instance affects all instances
+// Usage: private String Name --> private static String name
