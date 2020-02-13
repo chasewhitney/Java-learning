@@ -1,9 +1,8 @@
 public class LearningJava {
 
     public static void main(String[] args) {
-        
-//        overloadArea(5);
-//        overloadArea(3,4);
+        String str = "Ok";
+        System.out.println("I am $str}");
     }
 
     // Overload methods
@@ -46,3 +45,14 @@ public class LearningJava {
 // Static variables:
 // Every instance shares same static variable. Change to 1 instance affects all instances
 // Usage: private String Name --> private static String name
+
+// ---- Arrays ----
+// int[] myArray = new int[10]; // 10 element array of integers
+// int[] anotherArray = {1,2,3,4,5};
+// anotherArray[10] is NOT undefined, throws exception "out of bounds" ***
+// initialization: int 0, bool false, string/obj null
+
+
+// ---- Lookup / Not covered ----
+// create array of dynamic length
+// if(non-boolean), truthy/falsy equivalent
