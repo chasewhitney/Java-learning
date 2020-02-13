@@ -1,25 +1,20 @@
+import java.util.ArrayList;
+
 public class LearningJava {
 
     public static void main(String[] args) {
-        String str = "Ok";
-        System.out.println("I am $str}");
+
+
+        ArrayList<Car> myArr = new ArrayList<Car>();
+        myArr.add(new Car());
+
+        Car myCar = myArr.get(0);
+
+        System.out.println(myCar.getDoors());
+
     }
 
-    // Overload methods
-    public static void overloadArea(double radius) {
-        if(radius < 0) invalidEntry();
-        else System.out.println(radius * radius * Math.PI);
-    }
 
-    public static void overloadArea(double x, double y){
-        if(x < 0 || y < 0) invalidEntry();
-        else System.out.println(x * y);
-    }
-
-    // Handle invalid entry
-    public static void invalidEntry(){
-        System.out.println("Invalid Entry");
-    }
 }
 
 // ---- Parse -----
@@ -52,7 +47,23 @@ public class LearningJava {
 // anotherArray[10] is NOT undefined, throws exception "out of bounds" ***
 // initialization: int 0, bool false, string/obj null
 
+// ---- ArrayList ----
+// import java.util.ArrayList;
+// ArrayList<String> myArray = new ArrayList<String>()
+//
+// -- Methods --
+// .push(v) ==> .add(v)
+// .length ==> .size()
+// arr[i] ==> arr.get(i)
+// arr[i] = "Hi" ==> arr.set(i, "Hi")
+// arr.splice(i, 1) ==> arr.remove(i)
+// arr.includes(v) ==> arr.contains(v)
+// ArrayList<String> newArr = new ArrayList<String>(arrToCopy)
+// or - newArr.addAll(arrayToCopy)
+// or to String[] - newArr = arrToCopy.toArray(newArr)
 
-// ---- Lookup / Not covered ----
-// create array of dynamic length
+
+// ---- Lookup / Not yet covered ----
 // if(non-boolean), truthy/falsy equivalent
+
+

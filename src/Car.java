@@ -15,4 +15,8 @@ public class Car {
         this.model = model;
     }
 
+    public int getDoors() {
+        return this.doors;
+    }
+
 }
