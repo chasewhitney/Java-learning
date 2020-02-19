@@ -4,13 +4,12 @@ public class LearningJava {
 
     public static void main(String[] args) {
 
-    ArrayList<Integer> intArr = new ArrayList<Integer>();
+        Goose goose = new Goose("white");
 
-    intArr.add(5);
-        System.out.println(intArr.get(0));
+        goose.honk();
+        System.out.println(goose.getColor());
+
     }
-
-
 }
 
 // ---- Parse -----
@@ -98,8 +97,10 @@ public class LearningJava {
 // common for attaching event-handlers to buttons in UI like while programming Android apps
 
 
-
-
+// -- Abstract Class -- public abstract class ClassName {}, classes use "extends"
+// Like an interface except not all methods need to be abstract
+// -- can use both: public abstract void eat() and public String getName();
+// Practical use:
 
 // ---- Lookup / Not yet covered ----
 // truthy/falsy for conditionals?
