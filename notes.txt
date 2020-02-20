@@ -1,0 +1,105 @@
+ -- Access Modifiers ---------------------------------------------------------------------------
+ Public: No limitations
+ Private: YES: Same class only. NO: Everything else.
+ Protected: YES: Same package, different package subclass. NO: Different package non-subclass
+ Default: YES: Same package. NO: Different package.
+
+ -- Non-access Modifiers -----------------------------------------------------------------------
+
+ ---- Static ----
+ - Blocks: static {} : Executed once when class is first loaded.
+
+ - Variables: Single copy of variable is created and shared among all object at class level.
+  - Essentially global variables, created at class-level only. Blocks and variables executed in order
+
+ - Methods: Can be accessed before any objects of its class are created, and without reference to any object
+  - Can only directly call other static methods
+  - Can only access static data
+  - Cannot refer to this or super in any way
+
+ - Nested classes:
+  - Can be instantiated without instantiating its outer class
+  - Can only access static members of outer class
+
+ ---- Others: final, abstract, synchronized, transient, volatile, native ----
+
+
+ --- Scanner/Input -----------------------------------------------------------------------------
+ boolean hasNextInt = scanner.hasNextInt();
+ if(hasNextInt) -->
+ int myInt = scanner.nextInt();
+ scanner.nextLine(); // handles next line character (enter key)
+
+
+ ---- Classes ----------------------------------------------------------------------------------
+ Overload constructor, first statement must be: this(fields...)
+ Static methods: Can't access instance methods or instance variables directly
+ Static variables: Every instance shares same static variable. Change to one instance
+  affects all instances
+
+
+ ---- Iterators --------------------------------------------------------------------------------
+ Must use .next() to get to the first entry
+ Iterator itr = myList.iterator(); // only has: hasNext, next, remove
+ ListIterator<CLASS> i = myList.listIterator(optional starting index);
+ -- also has: add, previous, hasPrevious, next/previousIndex, set
+
+
+ ---- Interfaces -------------------------------------------------------------------------------
+ Standardize the way a particular set of classes are used
+ A contract/commitment saying the variables and methods will not change
+ JAVA 8: default methods with implementations, using keyword default
+ JAVA 9: private methods (commonly used when two default methods in an Interface
+  share common code)
+ PRACTICAL USE: used instead of Abstract when unrelated classes will implement the Interface
+ You want to specify behavior of a data type, but not concerned with who implements its behavior
+ Separate different behavior
+
+
+ -- Inner/Nested classes------------------------------------------------------------------------
+
+ -- Static
+ Used to associate a class with its outter-class
+ Behavior same as top level class, except packaged within class
+ Cannot access the non-static methods of its outter-class without first
+ creating an instance of that class
+
+ -- Non-static (inner)
+ CAN access outer private methods/fields : this == inner;
+
+ -- Local
+ Inner class defined within a scope block, usually a method
+
+ -- Anonymous
+ Also local, declared and instantiated at the same time, used only once
+ Common for attaching event-handlers to buttons in UI like while programming Android apps
+
+
+ -- Abstract Class ----------------------------------------------------------------------------
+ USE: public abstract class ClassName {}, classes use "extends"
+ PURPOSE: provide a common definition of a base class that multiple derived classes can share
+ Abstract can implement Interfaces
+ When Abstract is subclassed, subclass usually provides implementations for
+  all abstract methods of parent else, subclass must also be abstract
+ Like an Interface except not all methods need to be abstract
+ -- can use both: public abstract void eat() and public String getName();
+
+===============================================================================================
+
+ ==== Lookup  =================================================================================
+ Non-access modifiers
+
+
+ ==== SYNTAX ==================================================================================
+ for(String s : data){}
+ v -> arrowFuncLogic
+
+
+ ==== MISC REFERENCE ==========================================================================
+
+
+ ==== MISC SNIPPETS ============================================================================
+
+
+ ==== RESOURCES ================================================================================
+ geeksforgeeks.org/
