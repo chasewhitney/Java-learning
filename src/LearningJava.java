@@ -2,28 +2,25 @@ import java.util.*;
 
 public class LearningJava {
 
+
+
     public static void main(String[] args) {
-        List myList = new LinkedList<String>();
+        ArrayList<Integer> items = new ArrayList<>();
 
-        myList.add("b");
-        myList.add("d");
-        myList.add("y");
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.add(4);
+        items.add(5);
 
-        String newEntry = "a";
-        ListIterator<String> i = myList.listIterator();
 
+        printDoubledItems(items);
+    }
 
-        while(i.hasNext()) {
-          int comparison = newEntry.compareTo(i.next());
-          if(comparison <= 0) {
-              i.previous();
-              i.add(newEntry);
-              break;
-          }
-          if(!i.hasNext()) i.add(newEntry);
+    public static void printDoubledItems(ArrayList<Integer> items){
+        for(Object i : items) {
+            System.out.println((Integer) i * 2);
         }
-
-        System.out.println(myList);
     }
 }
 

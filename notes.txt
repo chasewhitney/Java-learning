@@ -1,15 +1,15 @@
- -- Access Modifiers ---------------------------------------------------------------------------
+---- Access Modifiers ---------------------------------------------------------------------------
  Public: No limitations
  Private: YES: Same class only. NO: Everything else.
  Protected: YES: Same package, different package subclass. NO: Different package non-subclass
  Default: YES: Same package. NO: Different package.
 
- -- Non-access Modifiers -----------------------------------------------------------------------
+---- Non-access Modifiers -----------------------------------------------------------------------
 
- ---- Static ----
+ --- Static ---
  - Blocks: static {} : Executed once when class is first loaded.
 
- - Variables: Single copy of variable is created and shared among all object at class level.
+ - Variables: Single copy of variable is created and shared among all objects at class level.
   - Essentially global variables, created at class-level only. Blocks and variables executed in order
 
  - Methods: Can be accessed before any objects of its class are created, and without reference to any object
@@ -21,31 +21,39 @@
   - Can be instantiated without instantiating its outer class
   - Can only access static members of outer class
 
- ---- Others: final, abstract, synchronized, transient, volatile, native ----
+ - Others: final, abstract, synchronized, transient, volatile, native
 
 
- --- Scanner/Input -----------------------------------------------------------------------------
+---- Scanner/Input -----------------------------------------------------------------------------
  boolean hasNextInt = scanner.hasNextInt();
  if(hasNextInt) -->
  int myInt = scanner.nextInt();
  scanner.nextLine(); // handles next line character (enter key)
 
 
- ---- Classes ----------------------------------------------------------------------------------
- Overload constructor, first statement must be: this(fields...)
+---- Classes -----------------------------------------------------------------------------------
+ Overload constructor: First statement must be: this(fields...)
  Static methods: Can't access instance methods or instance variables directly
  Static variables: Every instance shares same static variable. Change to one instance
   affects all instances
 
+ // public class Team<T extends Player & ICoach & IManager> implements Comparable<Team<T>>{
+ //    private ArrayList<T> members...
+ //    public boolean addPlayer(T player)...
+ // }
+ -- Interfaces can also specify Type parameter
+ -- Will accept any type that extends from Player or a subclass of Player
 
- ---- Iterators --------------------------------------------------------------------------------
+
+---- Iterators ---------------------------------------------------------------------------------
  Must use .next() to get to the first entry
- Iterator itr = myList.iterator(); // only has: hasNext, next, remove
+ Iterator i = myList.iterator();
+ -- only has: hasNext, next, remove
  ListIterator<CLASS> i = myList.listIterator(optional starting index);
  -- also has: add, previous, hasPrevious, next/previousIndex, set
 
 
- ---- Interfaces -------------------------------------------------------------------------------
+---- Interfaces --------------------------------------------------------------------------------
  Standardize the way a particular set of classes are used
  A contract/commitment saying the variables and methods will not change
  JAVA 8: default methods with implementations, using keyword default
@@ -56,7 +64,7 @@
  Separate different behavior
 
 
- -- Inner/Nested classes------------------------------------------------------------------------
+---- Inner/Nested classes-----------------------------------------------------------------------
 
  -- Static
  Used to associate a class with its outter-class
@@ -75,7 +83,7 @@
  Common for attaching event-handlers to buttons in UI like while programming Android apps
 
 
- -- Abstract Class ----------------------------------------------------------------------------
+---- Abstract Class ---------------------------------------------------------------------------
  USE: public abstract class ClassName {}, classes use "extends"
  PURPOSE: provide a common definition of a base class that multiple derived classes can share
  Abstract can implement Interfaces
@@ -86,20 +94,43 @@
 
 ===============================================================================================
 
- ==== Lookup  =================================================================================
- Non-access modifiers
+==== Lookup ===================================================================================
+ Non-access modifiers: final, abstract, synchronized, transient, volatile, native
 
 
- ==== SYNTAX ==================================================================================
- for(String s : data){}
+==== SYNTAX ===================================================================================
  v -> arrowFuncLogic
 
 
- ==== MISC REFERENCE ==========================================================================
+==== BEST PRACTICES ===========================================================================
 
 
- ==== MISC SNIPPETS ============================================================================
+==== RUNTIME COMPLEXITY =======================================================================
+ LinkedList vs ArrayList
+ -- LinkedList easier insertions, removal
+ -- ArrayList less memory overhead, O(Log n) Binary Search if sorted
 
 
- ==== RESOURCES ================================================================================
+==== MISC SNIPPETS ============================================================================
+
+ ---- Classes with Type parameter, Comparable Interface with Collections.sort() --------------
+ public class Team<T extends Player & ICoach & IManager> implements Comparable<Team<T>>{
+    private ArrayList<T> members...
+    public boolean addPlayer(T player)...
+
+    @Override
+    public int compareTo(Team<T> team) {
+        if(this.ranking() > team.ranking()) return -1;
+        else if(this.ranking() < team.ranking()) return 1;
+        else return 0;
+    }
+ }
+
+ Pseudocode elsewhere:
+  ArrayList<Team> teams;
+  Collections.sort(teams);
+  -- Will sort using compareTo function automatically
+ ---------------------------------------------------------------------------------------------
+
+==== RESOURCES ================================================================================
  geeksforgeeks.org/
