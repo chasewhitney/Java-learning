@@ -1,8 +1,12 @@
 ---- Access Modifiers ---------------------------------------------------------------------------
  Public: No limitations
- Private: YES: Same class only. NO: Everything else.
+ Private: YES: Same class only. NO: Everything else including subclasses.
  Protected: YES: Same package, different package subclass. NO: Different package non-subclass
- Default: YES: Same package. NO: Different package.
+ default, (Package-private): YES: Same package. NO: Different package.
+
+ Only Classes, Interfaces, and Enums can be top level.
+ Top level Class cannot be private.
+
 
 ---- Non-access Modifiers -----------------------------------------------------------------------
 
@@ -21,6 +25,13 @@
   - Can be instantiated without instantiating its outer class
   - Can only access static members of outer class
 
+ --- Final ---
+ - Generally used to define constant values
+ - Must initialize before constructor finishes
+ - Marking Class as final prevents creating subclasses
+ - Marking methods as final prevents them from being overridden
+ - Static final variable must be initialized by the time all static initialization blocks terminate
+
  - Others: final, abstract, synchronized, transient, volatile, native
 
 
@@ -37,6 +48,8 @@
  Static variables: Every instance shares same static variable. Change to one instance
   affects all instances
 
+
+---- Generics ----------------------------------------------------------------------------------
  // public class Team<T extends Player & ICoach & IManager> implements Comparable<Team<T>>{
  //    private ArrayList<T> members...
  //    public boolean addPlayer(T player)...
@@ -67,13 +80,14 @@
 ---- Inner/Nested classes-----------------------------------------------------------------------
 
  -- Static
- Used to associate a class with its outter-class
+ Used to associate a class with its outer-class
  Behavior same as top level class, except packaged within class
- Cannot access the non-static methods of its outter-class without first
+ Cannot access the non-static methods of its outer-class without first
  creating an instance of that class
 
  -- Non-static (inner)
  CAN access outer private methods/fields : this == inner;
+ Create Instance: OuterClass.InnerClass myInnerClass = outerInstance.new InnerClass();
 
  -- Local
  Inner class defined within a scope block, usually a method
@@ -92,7 +106,32 @@
  Like an Interface except not all methods need to be abstract
  -- can use both: public abstract void eat() and public String getName();
 
+
+---- Scope ------------------------------------------------------------------------------------
+ Code blocks will move backwards through parents to find variable declaration
+ OuterClass {
+     private String myVar = "outer";
+        InnerClass {
+            private String myVar = "inner";
+            ...
+            // myVar == "inner";
+            // this.myVar == "inner";
+            // OuterClass.this.myVar == "outer";
+        }
+ }
+
 ===============================================================================================
+
+==== Naming Conventions =======================================================================
+
+ Packages: lowercase, unique, internet domain reversed as prefix
+ Domain Name Components: _ for invalid characters, starting with a number, or are Java keywords
+ - 1world.com => com._1world
+ Interfaces: Consider what objects implementing interface will become or do
+ - Ex: List, Comparable, Serializable
+ - Constants: Declare using final keyword, ALL_UPPER_CASE
+ Type Parameters: E: Element; K: Key; V: Value; T: Type; S,U,V,etc for additional types
+
 
 ==== Lookup ===================================================================================
  Non-access modifiers: final, abstract, synchronized, transient, volatile, native
@@ -100,6 +139,12 @@
 
 ==== SYNTAX ===================================================================================
  v -> arrowFuncLogic
+ for(String s : myStrings)
+ bool1 ^ bool2 // XOR: seems to return bool1 != bool2
+  -- shorthand for (bool1 && !bool2 || !bool1 && bool2)
+  -- boolean dieselXorManual = (car.isDiesel() && !car.isManual()) || (!car.isDiesel() && car.isManual());
+  -- boolean dieselXorManual = car.isDiesel() ^ car.isManual();
+  -- wanting to know if something is one or the other but not both
 
 
 ==== BEST PRACTICES ===========================================================================
@@ -132,5 +177,20 @@
   -- Will sort using compareTo function automatically
  ---------------------------------------------------------------------------------------------
 
+
 ==== RESOURCES ================================================================================
  geeksforgeeks.org/
+
+
+==== PROJECT STRUCTURE ========================================================================
+ PackageDemo/src/com.example.game/
+
+ File -> Project Structure -> Artifacts -> Create new JAR - from modules with dependencies
+ (If JAR file should be executable, specify a Main Class)
+ Extract to target JAR
+ Output directory will be: PackageDemo/out/artifacts/PackageDemo_jar
+ Can: Build -> Make Project, Build -> Build Artifacts...
+
+ Use in another project:
+ In new project, File -> Project Structure -> Libraries -> Add, Java, select the JAR
+
